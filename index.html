@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>期待値の導き - 打ち時判別</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .container { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { color: #2c3e50; text-align: center; }
+        .form-group { margin-bottom: 15px; }
+        input, textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background-color: #5dade2; color: white; border: none; border-radius: 8px; cursor: pointer; }
+        #resultArea { margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #eaf2f8; display: none; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>期待値の導き</h2>
+    <div class="form-group">
+        <label>機種名</label>
+        <input type="text" id="modelName" placeholder="例：スマスロ北斗の拳">
+    </div>
+    <div class="form-group">
+        <label>現在のゲーム数</label>
+        <input type="number" id="gameCount" placeholder="例：600">
+    </div>
+    <div class="form-group">
+        <label>概要・状況</label>
+        <textarea id="summary" rows="3" placeholder="例：隣の台が高設定っぽいが、こちらは天井に近い…"></textarea>
+    </div>
+
+    <button onclick="analyzeData()">AIに問いかける</button>
+
+    <div id="resultArea">
+        <strong>【導き出された答え】</strong>
+        <p id="resultText"></p>
+    </div>
+</div>
+
+<script src="kitaiti.js"></script>
+</body>
+</html>
