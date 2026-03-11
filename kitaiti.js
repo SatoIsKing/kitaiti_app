@@ -32,11 +32,20 @@ async function analyzeData() {
         });
 
         const data = await response.json();
-        // ここで、中身をコンソールにそっと映します
-        console.log("AIからの返事:", data); 
-        const aiResponse = data.candidates[0].content.parts[0].text;
         
-        resultText.innerText = aiResponse;
+        // ここが重要でございます！
+        if (data.error) {
+            resultText.innerText = "Google様からエラーが届きましたー：「" + data.error.message + "」";
+            console.error("詳細:", data.error);
+            return;
+        }
+
+        if (data.candidates && data.candidates[0]) {
+            const aiResponse = data.candidates[0].content.parts[0].text;
+            resultText.innerText = aiResponse;
+        } else {
+            resultText.innerText = "返事の形が予想と違っているようです。中身：" + JSON.stringify(data);
+        }
     } catch (error) {
         // エラーの内容を画面にそのまま表示します
         resultText.innerText = "神託が届きませぬ…。「" + error.message + "」と申しております。";
