@@ -9,8 +9,9 @@ module.exports = async (req, res) => {
   try {
     // ほんの少し書き方を整理いたしました
     // URLの中身を少し変えてみます
-const modelName = "gemini-1.5-flash"; 
-const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${GEMINI_API_KEY}`;
+c// api/generate.js の中の url の部分をこれに変えてみてください
+const model = "gemini-1.5-flash";
+const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
     
     const response = await fetch(url, {
       method: 'POST',
